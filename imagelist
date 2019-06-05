@@ -1,0 +1,37 @@
+deer images/deer.png
+fox images/foxy.png
+bunny images/brownbun.png
+field images/field.png
+blacksmith images/foxy.png
+blob images/brownbun.png 255 255 255 0
+blob images/brownbun.png 255 255 255 0
+blob images/brownbun.png 255 255 255 0
+blob images/brownbun.png 255 255 255 0
+blob images/brownbun.png 255 255 255 0
+blob images/brownbun.png 255 255 255 0
+blob images/blob7.bmp 255 255 255 0
+blob images/blob8.bmp 255 255 255 0
+blob images/blob9.bmp 255 255 255 0
+blob images/blob10.bmp 255 255 255 0
+blob images/blob11.bmp 255 255 255 0
+blob images/blob12.bmp 255 255 255 0
+sand images/sand.png
+metalDude images/metalDude.bmp
+metalDudeSide images/metalDudeSide.bmp
+miner images/deer.png 252 252 252 0
+miner images/deer.png 252 252 252 0
+miner images/deer.png 252 252 252 0
+miner images/deer.png 252 252 252 0
+miner images/deer.png 252 252 252 0
+obstacle images/obstacle.bmp
+ore images/brownbun.png 201 26 26 0
+quake images/foxy.png 255 255 255 0
+quake images/foxy.png 255 255 255 0
+quake images/foxy.png 255 255 255 0
+quake images/foxy.png 255 255 255 0
+quake images/quake5.bmp 255 255 255 0
+quake images/quake6.bmp 255 255 255 0
+rocks images/rock.bmp
+vein images/vein.bmp
+water images/ocean.jpg
+background_default images/none.bmp
