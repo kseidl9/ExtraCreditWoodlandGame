@@ -29,6 +29,7 @@ class Deer extends AbstractMobileEntity {
 
             if (touchesBun((Bunny) bunnyTarget.get())) {
                 //bunny follows deer
+                ((Bunny) bunnyTarget.get()).setShouldFollow(true);
                 nextPeriod += this.getActionPeriod();
             }
         }
@@ -58,3 +59,4 @@ class Deer extends AbstractMobileEntity {
         return this.getPosition().adjacent(target.getPosition());
     }
 }
+
