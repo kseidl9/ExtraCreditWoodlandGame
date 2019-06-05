@@ -52,7 +52,8 @@ public class Bunny extends AbstractMobileEntity{
                 }
             }
         } else {
-
+            moveRandom(world);
+            nextPeriod += this.getActionPeriod();
        }
         scheduler.scheduleEvent(this,
                 new ActivityAction(this, world, imageStore),
@@ -76,6 +77,27 @@ public class Bunny extends AbstractMobileEntity{
 
     }
 
+    private void moveRandom(WorldModel world) {
+        Random rand = new Random();
+        int x = this.getPosition().x;
+        int y = this.getPosition().y;
+        int negX = rand.nextInt(3);
+        int negY = rand.nextInt(3);
+        if(negX == 1) {
+            x = x + 32;
+        } else if(negX == 2) {
+            x = x - 32;
+        }
+        if(negY == 1) {
+            y = y + 32;
+        } else if(negY == 2) {
+            y = y - 32;
+        }
+        if(world.withinBounds(new Point(x,y))) {
+            world.moveEntity(this, new Point(x, y));
+        }
+    }
+
     private boolean moveTo(WorldModel world, Deer target, EventScheduler scheduler)
     {
         if (this.getPosition().adjacent(target.getPosition()))
@@ -86,25 +108,18 @@ public class Bunny extends AbstractMobileEntity{
         }
         else
         {
-            Random rand = new Random();
-            int negX = rand.nextInt(2);
-            int negY = rand.nextInt(2);
-            if(negX == 0) {
+            Point nextPos = this.nextPosition(world, target.getPosition());
 
+            if (!this.getPosition().equals(nextPos))
+            {
+                Optional<Entity> occupant = world.getOccupant(nextPos);
+                if (occupant.isPresent())
+                {
+                    scheduler.unscheduleAllEvents(occupant.get());
+                }
+
+                world.moveEntity(this, nextPos);
             }
-            world.moveEntity(this, new Point ));
-//            Point nextPos = this.nextPosition(world, target.getPosition());
-//
-//            if (!this.getPosition().equals(nextPos))
-//            {
-//                Optional<Entity> occupant = world.getOccupant(nextPos);
-//                if (occupant.isPresent())
-//                {
-//                    scheduler.unscheduleAllEvents(occupant.get());
-//                }
-//
-//                world.moveEntity(this, nextPos);
-//            }
             return false;
         }
     }
