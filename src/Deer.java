@@ -51,7 +51,7 @@ class Deer extends AbstractMobileEntity {
             //for when game starts
             System.out.print("here");
             Random rand = new Random();
-            Point start = new Point(rand.nextInt(32), rand.nextInt(32));
+            Point start = new Point(rand.nextInt(32/2), rand.nextInt(32/2));
 
             Deer deer = new Deer(DEER_KEY,start, imageStore.getImageList(DEER_KEY), 6,5 );
 

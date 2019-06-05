@@ -89,24 +89,32 @@ public final class VirtualWorld
 
    public void keyPressed()
    {
-       if (key == CODED){
-          Point pos = deer.getPosition();
-           switch(keyCode){
+      if (key == CODED){
+         Point pos = deer.getPosition();
+         int dx = 0;
+         int dy = 0;
+         switch(keyCode) {
 
-               case UP:
-                   pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y -1));
-                   break;
-               case DOWN:
-                   pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y +1));
-                   break;
-               case LEFT:
-                   pos = deer.nextPosition(world, new Point(deer.getPosition().x -1, deer.getPosition().y));
-                   break;
-               case RIGHT:
-                   pos = deer.nextPosition(world, new Point(deer.getPosition().x +1, deer.getPosition().y));
-                   break;
-           }
+             case UP:
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1));
+                 dy = -1;
+                 break;
+             case DOWN:
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1));
+                 dy = 1;
+                 break;
+             case LEFT:
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y));
+                 dx = -1;
+                 break;
+             case RIGHT:
+                 dx = 1;
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y));
+                 break;
+         }
          world.moveEntity(deer, pos );
+         view.shiftView(dx, dy);
+
        }
 
    }
