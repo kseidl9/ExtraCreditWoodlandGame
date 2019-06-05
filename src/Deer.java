@@ -16,7 +16,9 @@ class Deer extends AbstractMobileEntity {
 
     @Override
     public Point nextPosition(WorldModel world, Point destPos) {
-        Point position = getPosition();
+        if (world.isOccupied(destPos)){
+            return getPosition();
+        }
         return destPos;
     }
 
