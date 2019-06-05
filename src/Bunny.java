@@ -39,7 +39,7 @@ public class Bunny extends AbstractMobileEntity{
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         long nextPeriod = this.getActionPeriod();
-        //if(shouldFollow) {
+        if(shouldFollow) {
             Optional<Entity> deerTarget = world.findNearest(this.getPosition(), Deer.class);
 
             if (deerTarget.isPresent()) {
@@ -51,9 +51,9 @@ public class Bunny extends AbstractMobileEntity{
                     nextPeriod += this.getActionPeriod();
                 }
             }
-        //} else {
+        } else {
 
-       // }
+       }
         scheduler.scheduleEvent(this,
                 new ActivityAction(this, world, imageStore),
                 nextPeriod);
@@ -75,6 +75,7 @@ public class Bunny extends AbstractMobileEntity{
         }
 
     }
+
     private boolean moveTo(WorldModel world, Deer target, EventScheduler scheduler)
     {
         if (this.getPosition().adjacent(target.getPosition()))
@@ -85,18 +86,25 @@ public class Bunny extends AbstractMobileEntity{
         }
         else
         {
-            Point nextPos = this.nextPosition(world, target.getPosition());
+            Random rand = new Random();
+            int negX = rand.nextInt(2);
+            int negY = rand.nextInt(2);
+            if(negX == 0) {
 
-            if (!this.getPosition().equals(nextPos))
-            {
-                Optional<Entity> occupant = world.getOccupant(nextPos);
-                if (occupant.isPresent())
-                {
-                    scheduler.unscheduleAllEvents(occupant.get());
-                }
-
-                world.moveEntity(this, nextPos);
             }
+            world.moveEntity(this, new Point ));
+//            Point nextPos = this.nextPosition(world, target.getPosition());
+//
+//            if (!this.getPosition().equals(nextPos))
+//            {
+//                Optional<Entity> occupant = world.getOccupant(nextPos);
+//                if (occupant.isPresent())
+//                {
+//                    scheduler.unscheduleAllEvents(occupant.get());
+//                }
+//
+//                world.moveEntity(this, nextPos);
+//            }
             return false;
         }
     }
@@ -105,4 +113,5 @@ public class Bunny extends AbstractMobileEntity{
         this.shouldFollow = shouldFollow;
     }
 }
+
 
