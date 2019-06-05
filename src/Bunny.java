@@ -9,6 +9,7 @@ public class Bunny extends AbstractMobileEntity{
 
     private static final String CARROT_KEY = "carrot";
     private static final String BUNNY_KEY = "bunny";
+    private boolean shouldFollow = false;
     //private boolean letThereBeBunnies = false;
 
 
@@ -37,21 +38,22 @@ public class Bunny extends AbstractMobileEntity{
 
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-        Optional<Entity> minerTarget = world.findNearest(this.getPosition(), Miner.class);
         long nextPeriod = this.getActionPeriod();
+        //if(shouldFollow) {
+            Optional<Entity> deerTarget = world.findNearest(this.getPosition(), Deer.class);
 
-        if (minerTarget.isPresent())
-        {
-            Point tgtPos = minerTarget.get().getPosition();
+            if (deerTarget.isPresent()) {
+                //Point tgtPos = deerTarget.get().getPosition();
 
-            if (moveTo(world, (Miner)minerTarget.get(), scheduler))
-            {
-                //Carrot carrot = new Carrot("carrot", tgtPos, imageStore.getImageList(CARROT_KEY));
-                //world.addEntity(carrot);
-                nextPeriod += this.getActionPeriod();
+                if (moveTo(world, (Deer)deerTarget.get(), scheduler)) {
+                    //Carrot carrot = new Carrot("carrot", tgtPos, imageStore.getImageList(CARROT_KEY));
+                    //world.addEntity(carrot);
+                    nextPeriod += this.getActionPeriod();
+                }
             }
-        }
+        //} else {
 
+       // }
         scheduler.scheduleEvent(this,
                 new ActivityAction(this, world, imageStore),
                 nextPeriod);
@@ -67,20 +69,18 @@ public class Bunny extends AbstractMobileEntity{
             //Point close = new Point(p.x + rand.nextInt(7), p.y + rand.nextInt(7));
             //System.out.println(close);
             Bunny bun = new Bunny("bunny",p, imageStore.getImageList(BUNNY_KEY), 6,5 );
-
-
             world.addEntity(bun);
             bun.scheduleActions(scheduler, world, imageStore);
             System.out.print("bun");
         }
 
     }
-    private boolean moveTo(WorldModel world, Miner target, EventScheduler scheduler)
+    private boolean moveTo(WorldModel world, Deer target, EventScheduler scheduler)
     {
         if (this.getPosition().adjacent(target.getPosition()))
         {
-            world.removeEntity(target);
-            scheduler.unscheduleAllEvents(target);
+            //world.removeEntity(target);
+            //scheduler.unscheduleAllEvents(target);
             return true;
         }
         else
@@ -100,4 +100,9 @@ public class Bunny extends AbstractMobileEntity{
             return false;
         }
     }
+
+    public void setShouldFollow(boolean shouldFollow) {
+        this.shouldFollow = shouldFollow;
+    }
 }
+
