@@ -3,6 +3,11 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 import processing.core.*;
 
+import static java.awt.Event.DOWN;
+import static java.awt.Event.UP;
+import static javax.swing.JSplitPane.LEFT;
+import static javax.swing.JSplitPane.RIGHT;
+
 public final class VirtualWorld
    extends PApplet
 {
@@ -39,6 +44,7 @@ public final class VirtualWorld
    private WorldModel world;
    private WorldView view;
    private EventScheduler scheduler;
+   private Deer deer;
 
    private long next_time;
 
@@ -62,7 +68,7 @@ public final class VirtualWorld
 
       loadImages(IMAGE_LIST_FILE_NAME, imageStore, this);
       loadWorld(world, LOAD_FILE_NAME, imageStore);
-      Deer.createDeer(world, imageStore, scheduler);
+      deer = Deer.createDeer(world, imageStore, scheduler);
 
       world.scheduleActions(scheduler, imageStore);
 
@@ -83,28 +89,26 @@ public final class VirtualWorld
 
    public void keyPressed()
    {
-      if (key == CODED)
-      {
-         int dx = 0;
-         int dy = 0;
+       if (key == CODED){
+          Point pos = deer.getPosition();
+           switch(keyCode){
 
-         switch (keyCode)
-         {
-            case UP:
-               dy = -1;
-               break;
-            case DOWN:
-               dy = 1;
-               break;
-            case LEFT:
-               dx = -1;
-               break;
-            case RIGHT:
-               dx = 1;
-               break;
-         }
-         view.shiftView(dx, dy);
-      }
+               case UP:
+                   pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y -1));
+                   break;
+               case DOWN:
+                   pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y +1));
+                   break;
+               case LEFT:
+                   pos = deer.nextPosition(world, new Point(deer.getPosition().x -1, deer.getPosition().y));
+                   break;
+               case RIGHT:
+                   pos = deer.nextPosition(world, new Point(deer.getPosition().x +1, deer.getPosition().y));
+                   break;
+           }
+         world.moveEntity(deer, pos );
+       }
+
    }
 
    private static Background createDefaultBackground(ImageStore imageStore)

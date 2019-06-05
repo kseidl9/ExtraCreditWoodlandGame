@@ -5,7 +5,12 @@ import java.util.Optional;
 import java.util.Random;
 import java.awt.*;
 
-public class Deer extends AbstractMobileEntity {
+import static java.awt.Event.DOWN;
+import static java.awt.Event.UP;
+import static javax.swing.JSplitPane.LEFT;
+import static processing.core.PConstants.CODED;
+
+class Deer extends AbstractMobileEntity {
 
         private static final String DEER_KEY = "deer";
         //private boolean letThereBeBunnies = false;
@@ -15,19 +20,10 @@ public class Deer extends AbstractMobileEntity {
             super(id, position, images, actionPeriod, animationPeriod);
         }
 
-
         @Override
         public Point nextPosition(WorldModel world, Point destPos) {
             Point position = getPosition();
-            PathingStrategy strategy = getStrategy();
-            List<Point> pts = strategy.computePath(position, destPos,
-                    p -> !world.isOccupied(p),
-                    (s,d) -> s.adjacent(d),
-                    PathingStrategy.DIAGONAL_CARDINAL_NEIGHBORS);
-            if (pts.isEmpty())
-                return position;
-            else
-                return pts.get(pts.size() -2);
+            return destPos;
         }
 
         @Override
@@ -51,7 +47,7 @@ public class Deer extends AbstractMobileEntity {
                     nextPeriod);
         }
 
-        public static void createDeer(WorldModel world, ImageStore imageStore, EventScheduler scheduler){
+        public static Deer createDeer(WorldModel world, ImageStore imageStore, EventScheduler scheduler){
             //for when game starts
             System.out.print("here");
             Random rand = new Random();
@@ -63,7 +59,9 @@ public class Deer extends AbstractMobileEntity {
             world.addEntity(deer);
             deer.scheduleActions(scheduler, world, imageStore);
             System.out.print("deer");
+            return deer;
             }
+
 
 
         private boolean moveTo(WorldModel world, Bunny target, EventScheduler scheduler)
