@@ -18,11 +18,6 @@ blob images/blob12.bmp 255 255 255 0
 sand images/sand.png
 metalDude images/metalDude.bmp
 metalDudeSide images/metalDudeSide.bmp
-miner images/deer.png 252 252 252 0
-miner images/deer.png 252 252 252 0
-miner images/deer.png 252 252 252 0
-miner images/deer.png 252 252 252 0
-miner images/deer.png 252 252 252 0
 obstacle images/obstacle.bmp
 ore images/brownbun.png 201 26 26 0
 quake images/foxy.png 255 255 255 0

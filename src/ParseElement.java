@@ -13,6 +13,15 @@ public class ParseElement {
     private static final int MINER_NUM_PROPERTIES = 7;
     private static final String MINER_KEY = "miner";
 
+    private static final int DEER_ANIMATION_PERIOD = 6;
+    private static final int DEER_ACTION_PERIOD = 5;
+    private static final int DEER_LIMIT = 4;
+    private static final int DEER_ROW = 3;
+    private static final int DEER_COL = 2;
+    private static final int DEER_ID = 1;
+    private static final int DEER_NUM_PROPERTIES = 5;
+    private static final String DEER_KEY = "deer";
+
     private static final int OBSTACLE_ROW = 3;
     private static final int OBSTACLE_COL = 2;
     private static final int OBSTACLE_ID = 1;
@@ -52,6 +61,22 @@ public class ParseElement {
         }
 
         return properties.length == BGND_NUM_PROPERTIES;
+    }
+
+    public static boolean parseDeer(WorldModel world, String[] properties, ImageStore imageStore)
+    {
+        if (properties.length == DEER_NUM_PROPERTIES)
+        {
+            Point pt = new Point(Integer.parseInt(properties[DEER_COL]),
+                    Integer.parseInt(properties[DEER_ROW]));
+            Entity entity = new Deer(
+            properties[DEER_ID], pt, imageStore.getImageList(DEER_KEY),
+                    Integer.parseInt(properties[DEER_ACTION_PERIOD]),
+                    Integer.parseInt(properties[DEER_ANIMATION_PERIOD]));
+            world.tryAddEntity(entity);
+        }
+
+        return properties.length == DEER_NUM_PROPERTIES;
     }
 
     public static boolean parseMiner(WorldModel world, String[] properties, ImageStore imageStore)

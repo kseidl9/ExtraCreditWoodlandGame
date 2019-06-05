@@ -62,6 +62,7 @@ public final class VirtualWorld
 
       loadImages(IMAGE_LIST_FILE_NAME, imageStore, this);
       loadWorld(world, LOAD_FILE_NAME, imageStore);
+      Deer.createDeer(world, imageStore, scheduler);
 
       world.scheduleActions(scheduler, imageStore);
 
