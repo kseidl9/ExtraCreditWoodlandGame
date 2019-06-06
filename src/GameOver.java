@@ -11,15 +11,15 @@ public class GameOver extends AbstractEntity {
 
     public static void endGame(WorldModel world, Point endPos, ImageStore imageStore, EventScheduler scheduler ){
 
-
         Set<Entity> entities = world.getEntities();
         GameOver go = new GameOver(GAME_OVER_KEY, endPos, imageStore.getImageList(GAME_OVER_KEY));
-        world.addEntity(go);
+
 
         for (Entity e : entities){
-            System.out.print("GAME OVER");
-            world.removeEntity(e);
             scheduler.unscheduleAllEvents(e);
         }
+        System.out.print("GAME OVER");
+        world.clearEntities();
+        world.addEntity(go);
     }
 }

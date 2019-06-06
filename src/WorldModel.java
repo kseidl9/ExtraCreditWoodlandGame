@@ -43,6 +43,9 @@ final class WorldModel
         e2.setPosition(p1);
         e1.setPosition(p2);
     }
+    public void clearEntities(){
+      entities.clear();
+    }
 
     private static Optional<Entity> nearestEntity(List<Entity> entities, Point pos)
    {
