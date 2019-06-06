@@ -16,13 +16,11 @@ public class Fox extends AbstractMobileEntity {
             super(id, position, images, actionPeriod, animationPeriod);
         }
 
-        public static void maybeKillFox(WorldModel world, Point mouse, ImageStore imageStore, EventScheduler scheduler){
-            if (world.isOccupied(mouse)){
-                if (world.getOccupant(mouse).getClass().equals(Fox.class)){
-                    Fox fox = (Fox)world.getOccupant(mouse).get();
-                    world.removeEntity(fox);
-                }
-            }
+        public void kill(WorldModel world, ImageStore imageStore, EventScheduler scheduler){
+                    world.removeEntity(this);
+                    scheduler.unscheduleAllEvents(this);
+
+
         }
         @Override
         public Point nextPosition(WorldModel world, Point destPos) {
@@ -100,6 +98,15 @@ public class Fox extends AbstractMobileEntity {
             fox.scheduleActions(scheduler, world, imageStore);
 
         }
+
+    }
+    public static void setTarget(Bunny bun, ImageStore imageStore, WorldModel world, EventScheduler scheduler){
+        Random rand = new Random();
+        Point start = new Point(rand.nextInt(32), rand.nextInt(32));
+        Fox fox = new Fox(FOX_KEY, start, imageStore.getImageList(FOX_KEY), 6,5);
+        world.addEntity(fox);
+        fox.target = bun;
+        fox.scheduleActions(scheduler, world, imageStore);
 
     }
     }

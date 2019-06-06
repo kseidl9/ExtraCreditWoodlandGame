@@ -2,6 +2,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.Set;
+
 import processing.core.*;
 
 public final class VirtualWorld
@@ -41,6 +43,7 @@ public final class VirtualWorld
    private WorldView view;
    private EventScheduler scheduler;
    private Deer deer;
+   private Fox fox;
 
    private long next_time;
 
@@ -68,11 +71,11 @@ public final class VirtualWorld
       Bunny.spawnBunnies(world, new Point(rand.nextInt(32), rand.nextInt(32)), imageStore, scheduler);
       deer = Deer.createDeer(world, imageStore, scheduler);
 
-      Fox.spawnFoxes(world, new Point(rand.nextInt(32), rand.nextInt(32)), imageStore, scheduler);
       world.scheduleActions(scheduler, imageStore);
 
       next_time = System.currentTimeMillis() + TIMER_ACTION_PERIOD;
    }
+
 
    public void draw()
    {
@@ -117,9 +120,21 @@ public final class VirtualWorld
        }
 
    }
-    public void mouseClicked()
+   public void mouseClicked(){
+       Bunny.spawnBunnies(world, screenToTile(new Point(mouseX, mouseY)), imageStore, scheduler);
+   }
+
+   public void keyTyped()
     {
-        Fox.maybeKillFox(world, screenToTile(new Point(mouseX,mouseY)),imageStore, scheduler);
+        Set<Entity> entities = world.getEntities();
+        for (Entity e : entities){
+            if (e instanceof Fox){
+                fox = (Fox)e;
+            }
+        }
+
+        if (key == 'f')
+            fox.kill(world,imageStore, scheduler);
     }
 
     public static Point screenToTile(Point p) {

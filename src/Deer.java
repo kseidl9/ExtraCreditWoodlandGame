@@ -44,10 +44,12 @@ class Deer extends AbstractMobileEntity {
                 if (followers.size() == 0){
                     bun.setTarget(this);
                     followers.add(bun);
+                    Fox.setTarget(followers.getLast(), imageStore, world, scheduler);
                 }
                 else{
                     bun.setTarget(followers.getLast());
                     followers.add(bun);
+                    Fox.setTarget(followers.getLast(), imageStore, world, scheduler);
                 }
                 nextPeriod += this.getActionPeriod();
             }
