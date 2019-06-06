@@ -93,7 +93,7 @@ public class Bunny extends AbstractMobileEntity{
         } else if(negY == 2) {
             y = y - 32;
         }
-        if(!world.isOccupied(new Point(x,y))) {
+        if(!world.isOccupied(new Point(x,y)) && world.withinBounds(new Point(x,y))) {
             world.moveEntity(this, new Point(x, y));
         }
     }
