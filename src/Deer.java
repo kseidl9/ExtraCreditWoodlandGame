@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 class Deer extends AbstractMobileEntity {
 
     private static final String DEER_KEY = "deer";
+    private static final String GAME_OVER_KEY = "gameOver";
     private String direction;
     private static LinkedList<Bunny> followers = new LinkedList<>();
 
@@ -51,6 +52,15 @@ class Deer extends AbstractMobileEntity {
                 nextPeriod += this.getActionPeriod();
             }
         }
+        for(int i = 1; i < followers.size(); i++) {
+            if(this.touchesBun(followers.get(i))) {
+                //game over
+                world.removeAllEntities();
+                GameOver go = new GameOver("gameOver", this.getPosition(), imageStore.getImageList(GAME_OVER_KEY));
+                world.addEntity(go);
+                break;
+            }
+        }
 
         scheduler.scheduleEvent(this,
                 new ActivityAction(this, world, imageStore),
@@ -78,4 +88,5 @@ class Deer extends AbstractMobileEntity {
         return followers;
     }
 }
+
 
