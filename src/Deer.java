@@ -32,7 +32,6 @@ class Deer extends AbstractMobileEntity {
         return destPos;
     }
 
-    @Override
     public Point getPointBehind(WorldModel world) {
         Point deerPoint = getPosition();
         switch(direction){

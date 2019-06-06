@@ -37,7 +37,6 @@ public class Bunny extends AbstractMobileEntity{
             return pts.get(pts.size() -2);
     }
 
-    @Override
     public Point getPointBehind(WorldModel world) {
         return null;
     }

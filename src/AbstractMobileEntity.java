@@ -12,7 +12,7 @@ abstract class AbstractMobileEntity extends AbstractAnimatedEntity implements Mo
    }
 
    public abstract Point nextPosition(WorldModel world, Point destPos);
-   public abstract Point getPointBehind(WorldModel world);
+
 
    @Override
    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {

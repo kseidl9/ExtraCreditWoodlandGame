@@ -20,31 +20,13 @@ public class ParseElement {
     private static final int BUNNY_NUM_PROPERTIES = 5;
     private static final String BUNNY_KEY = "deer";
 
-    private static final int OBSTACLE_ROW = 3;
-    private static final int OBSTACLE_COL = 2;
-    private static final int OBSTACLE_ID = 1;
-    private static final int OBSTACLE_NUM_PROPERTIES = 4;
-    private static final String OBSTACLE_KEY = "obstacle";
-
-    private static final int ORE_ACTION_PERIOD = 4;
-    private static final int ORE_ROW = 3;
-    private static final int ORE_COL = 2;
-    private static final int ORE_ID = 1;
-    private static final int ORE_NUM_PROPERTIES = 5;
-    private static final String ORE_KEY = "ore";
-
-    private static final int SMITH_ROW = 3;
-    private static final int SMITH_COL = 2;
-    private static final int SMITH_ID = 1;
-    private static final int SMITH_NUM_PROPERTIES = 4;
-    private static final String SMITH_KEY = "blacksmith";
-
-    private static final int VEIN_ACTION_PERIOD = 4;
-    private static final int VEIN_ROW = 3;
-    private static final int VEIN_COL = 2;
-    private static final int VEIN_ID = 1;
-    private static final int VEIN_NUM_PROPERTIES = 5;
-    private static final String VEIN_KEY = "vein";
+    private static final int FOX_ANIMATION_PERIOD = 6;
+    private static final int FOX_ACTION_PERIOD = 5;
+    private static final int FOX_ROW = 3;
+    private static final int FOX_COL = 2;
+    private static final int FOX_ID = 1;
+    private static final int FOX_NUM_PROPERTIES = 5;
+    private static final String FOX_KEY = "deer";
 
 
     public static boolean parseBackground(WorldModel world, String[] properties, ImageStore imageStore) {
@@ -70,6 +52,20 @@ public class ParseElement {
         }
 
         return properties.length == BUNNY_NUM_PROPERTIES;
+    }
+
+    public static boolean parseFox(WorldModel world, String[] properties, ImageStore imageStore) {
+        if (properties.length == FOX_NUM_PROPERTIES) {
+            Point pt = new Point(Integer.parseInt(properties[FOX_COL]),
+                    Integer.parseInt(properties[FOX_ROW]));
+            Entity entity = new Fox(
+                    properties[FOX_ID], pt, imageStore.getImageList(FOX_KEY),
+                    Integer.parseInt(properties[FOX_ACTION_PERIOD]),
+                    Integer.parseInt(properties[FOX_ANIMATION_PERIOD]));
+            world.tryAddEntity(entity);
+        }
+
+        return properties.length == FOX_NUM_PROPERTIES;
     }
 
     public static boolean parseDeer(WorldModel world, String[] properties, ImageStore imageStore) {
