@@ -1,6 +1,7 @@
 import processing.core.PImage;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 final class WorldModel
 {
@@ -132,6 +133,13 @@ final class WorldModel
       }
 
       return Optional.empty();
+   }
+
+   public void removeAllEntities() {
+      List<Entity> list = entities.stream().collect(Collectors.toList());
+      for(Entity e : list) {
+         this.removeEntity(e);
+      }
    }
 
    public void moveEntity(Entity entity, Point pos)
