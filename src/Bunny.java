@@ -47,8 +47,8 @@ public class Bunny extends AbstractMobileEntity{
                 nextPeriod += this.getActionPeriod();
             }
         } else {
-            moveRandom(world);
-            //nextPeriod += this.getActionPeriod();
+            //moveRandom(world);
+            nextPeriod += this.getActionPeriod();
        }
         scheduler.scheduleEvent(this,
                 new ActivityAction(this, world, imageStore),
@@ -56,8 +56,7 @@ public class Bunny extends AbstractMobileEntity{
     }
 
     //need to tell deer if eaten
-
-    private void moveRandom(WorldModel world) {
+    /*FIXME private void moveRandom(WorldModel world) {
         Random rand = new Random();
         int x = this.getPosition().x;
         int y = this.getPosition().y;
@@ -78,7 +77,7 @@ public class Bunny extends AbstractMobileEntity{
         if(!world.isOccupied(new Point(x,y)) && world.withinBounds(new Point(x,y))) {
             world.moveEntity(this, new Point(x, y));
         }
-    }
+    }*/
 
     private boolean moveTo(WorldModel world, Entity target, EventScheduler scheduler)
     {

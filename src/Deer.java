@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 class Deer extends AbstractMobileEntity {
 
@@ -26,29 +27,19 @@ class Deer extends AbstractMobileEntity {
 
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-        // FIXME need to just see if there are adjacent bunnies we're that aren't yet following the deer
         //Optional<Entity> bunnyTarget = world.findNearest(this.getPosition(), Bunny.class);
-        final List<Bunny> notFollowing = new LinkedList<>();
         long nextPeriod = this.getActionPeriod();
 
-        PathingStrategy.CARDINAL_NEIGHBORS.apply(getPosition()).forEach(p -> {
-            if (world.isOccupied(p)) {
-                Optional<Entity> occ = world.getOccupant(p);
-                if (occ.isPresent()) {
-                    Entity oe = occ.get();
-                    if (oe instanceof Bunny) {
-                        Bunny b = (Bunny) oe;
-                        if (!notFollowing.contains(b))
-                            notFollowing.add(b);
-                    }
-                }
-            }
-        });
+        List<Bunny> notFollowing = PathingStrategy.CARDINAL_NEIGHBORS.apply(getPosition())
+                .filter(p ->world.isOccupied(p) &&world.getOccupant(p).isPresent() &&world.getOccupant(p).get()instanceof Bunny)
+                .map(p -> (Bunny)world.getOccupant(p).get())
+                .filter(b -> !followers.contains(b))
+                .collect(Collectors.toList());
 
         if (!notFollowing.isEmpty()) {
             Bunny bun = notFollowing.get(0);
 
-            if (!notFollowing.contains(bun) && touchesBun(bun)) {
+            if (!followers.contains(bun) && touchesBun(bun)) {
                 if (followers.size() == 0){
                     bun.setTarget(this);
                     followers.add(bun);
