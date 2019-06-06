@@ -35,6 +35,9 @@ class Deer extends AbstractMobileEntity {
         return destPos;
     }
 
+    public static void killedBun(Bunny bun){
+        followers.remove(bun);
+    }
 
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
