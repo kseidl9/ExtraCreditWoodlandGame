@@ -1,0 +1,14 @@
+#authors: Katie Seidl and Ria Bhatt
+
+Our project is built off of the framework of our Project 5, however everything but the abstract classes were pretty much removed. From the uml it can be seen we have two main interfaces Entity and Action that are the parents to different kinds of abstract entities and abstract actions. They follow a basic heirarchy with the characters, deer, bunny, and fox, being at the bottom. 
+Partners:
+    Katie:
+        -made the deer class, made it the main character, and allowed it and the screen to move with the cursor keys
+        - added the parsed functions and removed all the old entities from the structure we built it off of
+        - made the fox class, made them turn what it ate into carrots
+        -fixed how the rabbits followed so it was like a train instead of an L
+        -made the fox die if F is pressed
+
+    Ria:
+        - made bunnies move randomly, and follow deer if touched
+        - make game over if deer touches its tail
