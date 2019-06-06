@@ -1,5 +1,6 @@
 import processing.core.PImage;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
@@ -13,6 +14,7 @@ class Deer extends AbstractMobileEntity {
     private static final String DOWN = "down";
     private static final String LEFT = "left";
     private static final String RIGHT = "right";
+    private static List<Bunny> followers = new LinkedList<>();
     //private boolean letThereBeBunnies = false;
 
 
@@ -61,7 +63,12 @@ class Deer extends AbstractMobileEntity {
 
             if (touchesBun((Bunny) bunnyTarget.get())) {
                 //bunny follows deer
-                ((Bunny) bunnyTarget.get()).setShouldFollow(true);
+                if(!((Bunny) bunnyTarget.get()).follower()){
+                    ((Bunny) bunnyTarget.get()).setShouldFollow(true);
+                    followers.add(((Bunny) bunnyTarget.get()));
+                } else {
+                    world.moveEntity((Bunny) bunnyTarget.get(), this.getPointBehind(world));
+                }
                 nextPeriod += this.getActionPeriod();
             }
         }
@@ -89,6 +96,10 @@ class Deer extends AbstractMobileEntity {
 
     private boolean touchesBun(Bunny target) {
         return this.getPosition().adjacent(target.getPosition());
+    }
+
+    public static List<Bunny> getFollowers() {
+        return followers;
     }
 }
 
