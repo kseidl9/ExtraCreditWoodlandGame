@@ -5,11 +5,6 @@ import java.util.stream.Collectors;
 
 final class WorldModel
 {
-   public static final String ORE_KEY = "ore";
-   private static final String VEIN_KEY = "vein";
-   private static final String SMITH_KEY = "blacksmith";
-
-   private static final String OBSTACLE_KEY = "obstacle";
    private static final int PROPERTY_KEY = 0;
    private static final String BGND_KEY = "background";
 

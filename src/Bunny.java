@@ -111,7 +111,7 @@ public class Bunny extends AbstractMobileEntity{
         int nbuns = rand.nextInt(20)+1;
 
         for (int i = 0; i < nbuns; i++ ){
-            Point close = new Point(p.x + rand.nextInt(7), p.y + rand.nextInt(7));
+            Point close = new Point(rand.nextInt(p.x),  rand.nextInt(p.y));
             System.out.println(close);
             Bunny bun = new Bunny("bunny",close, imageStore.getImageList(BUNNY_KEY), 6,5 );
             world.addEntity(bun);
