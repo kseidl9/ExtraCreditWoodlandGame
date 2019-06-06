@@ -5,10 +5,14 @@ import java.util.Set;
 
 public class GameOver extends AbstractEntity {
     private static final String GAME_OVER_KEY = "gameOver";
+    private static VirtualWorld game = null;
     public GameOver(String id, Point position, List<PImage>images) {
         super(id, position, images);
     }
 
+    public static void setVirtualWorld(VirtualWorld w){
+        game = w;
+    }
     public static void endGame(WorldModel world, Point endPos, ImageStore imageStore, EventScheduler scheduler ){
 
         Set<Entity> entities = world.getEntities();
@@ -21,5 +25,6 @@ public class GameOver extends AbstractEntity {
         System.out.print("GAME OVER");
         world.clearEntities();
         world.addEntity(go);
+        game.stop();
     }
 }

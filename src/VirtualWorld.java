@@ -74,6 +74,7 @@ public final class VirtualWorld
       world.scheduleActions(scheduler, imageStore);
 
       next_time = System.currentTimeMillis() + TIMER_ACTION_PERIOD;
+      GameOver.setVirtualWorld(this);
    }
 
    public void draw()
