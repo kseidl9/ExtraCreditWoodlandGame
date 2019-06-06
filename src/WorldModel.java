@@ -10,10 +10,10 @@ final class WorldModel
 
    private static final String OBSTACLE_KEY = "obstacle";
    private static final int PROPERTY_KEY = 0;
-   private static final String MINER_KEY = "miner";
    private static final String BGND_KEY = "background";
 
    private static final String DEER_KEY = "deer";
+   private static final String BUNNY_KEY = "bunny";
 
    private static final int ORE_REACH = 1;
    private int numRows;
@@ -233,16 +233,8 @@ final class WorldModel
          {
             case BGND_KEY:
                return ParseElement.parseBackground(this, properties, imageStore);
-            case MINER_KEY:
-               return ParseElement.parseMiner(this, properties, imageStore);
-            case OBSTACLE_KEY:
-               return ParseElement.parseObstacle(this, properties, imageStore);
-            case ORE_KEY:
-               return ParseElement.parseOre(this, properties, imageStore);
-            case SMITH_KEY:
-               return ParseElement.parseSmith(this, properties, imageStore);
-            case VEIN_KEY:
-               return ParseElement.parseVein(this, properties, imageStore);
+            case BUNNY_KEY:
+               return ParseElement.parseBackground(this, properties, imageStore);
             case DEER_KEY:
                return ParseElement.parseDeer(this, properties, imageStore);
          }

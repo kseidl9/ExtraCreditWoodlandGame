@@ -64,15 +64,15 @@ public class Bunny extends AbstractMobileEntity{
         //spawn bunnies
         System.out.print("here");
         Random rand = new Random();
-        int nbuns = rand.nextInt(20)+2;
-        nbuns = 1;
+        int nbuns = rand.nextInt(20)+1;
+
         for (int i = 0; i < nbuns; i++ ){
-            //Point close = new Point(p.x + rand.nextInt(7), p.y + rand.nextInt(7));
-            //System.out.println(close);
-            Bunny bun = new Bunny("bunny",p, imageStore.getImageList(BUNNY_KEY), 6,5 );
+            Point close = new Point(p.x + rand.nextInt(7), p.y + rand.nextInt(7));
+            System.out.println(close);
+            Bunny bun = new Bunny("bunny",close, imageStore.getImageList(BUNNY_KEY), 6,5 );
             world.addEntity(bun);
             bun.scheduleActions(scheduler, world, imageStore);
-            System.out.print("bun");
+
         }
 
     }
@@ -93,7 +93,7 @@ public class Bunny extends AbstractMobileEntity{
         } else if(negY == 2) {
             y = y - 32;
         }
-        if(world.withinBounds(new Point(x,y))) {
+        if(!world.isOccupied(new Point(x,y))) {
             world.moveEntity(this, new Point(x, y));
         }
     }

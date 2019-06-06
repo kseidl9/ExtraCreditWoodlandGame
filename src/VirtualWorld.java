@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Random;
 import java.util.Scanner;
 import processing.core.*;
 
@@ -68,6 +69,8 @@ public final class VirtualWorld
 
       loadImages(IMAGE_LIST_FILE_NAME, imageStore, this);
       loadWorld(world, LOAD_FILE_NAME, imageStore);
+      Random rand = new Random();
+      Bunny.spawnBunnies(world, new Point(rand.nextInt(32), rand.nextInt(32)), imageStore, scheduler);
       deer = Deer.createDeer(world, imageStore, scheduler);
 
       world.scheduleActions(scheduler, imageStore);
