@@ -99,20 +99,20 @@ public final class VirtualWorld
          switch(keyCode) {
 
              case UP:
-                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1));
+                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1), "up");
                  dy = -1;
                  break;
              case DOWN:
-                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1));
+                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1), "down");
                  dy = 1;
                  break;
              case LEFT:
-                 pos = deer.nextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y));
+                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y), "left");
                  dx = -1;
                  break;
              case RIGHT:
                  dx = 1;
-                 pos = deer.nextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y));
+                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y), "right");
                  break;
          }
          world.moveEntity(deer, pos );

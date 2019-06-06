@@ -7,6 +7,12 @@ import java.util.Random;
 class Deer extends AbstractMobileEntity {
 
     private static final String DEER_KEY = "deer";
+    private String direction;
+    private static final int TILE = 32;
+    private static final String UP = "up";
+    private static final String DOWN = "down";
+    private static final String LEFT = "left";
+    private static final String RIGHT = "right";
     //private boolean letThereBeBunnies = false;
 
 
@@ -14,12 +20,37 @@ class Deer extends AbstractMobileEntity {
         super(id, position, images, actionPeriod, animationPeriod);
     }
 
+    public Point setDirectionNextPosition(WorldModel world, Point destPos, String direction){
+        this.direction = direction;
+        return nextPosition(world, destPos);
+    }
     @Override
     public Point nextPosition(WorldModel world, Point destPos) {
         if (world.isOccupied(destPos)){
             return getPosition();
         }
         return destPos;
+    }
+
+    @Override
+    public Point getPointBehind(WorldModel world) {
+        Point deerPoint = getPosition();
+        switch(direction){
+            case UP:
+                return new Point(deerPoint.x, deerPoint.y + TILE);
+
+            case DOWN:
+                return new Point(deerPoint.x, deerPoint.y - TILE);
+
+            case RIGHT:
+                return new Point(deerPoint.x - TILE, deerPoint.y);
+
+            case LEFT:
+                return new Point(deerPoint.x + TILE, deerPoint.y);
+
+        }
+        return deerPoint; //shouldn't happen
+
     }
 
     @Override

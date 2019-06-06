@@ -9,6 +9,7 @@ public class Bunny extends AbstractMobileEntity{
 
     private static final String CARROT_KEY = "carrot";
     private static final String BUNNY_KEY = "bunny";
+    private static final int TILE = 32;
     private boolean shouldFollow = false;
     //private boolean letThereBeBunnies = false;
 
@@ -34,6 +35,11 @@ public class Bunny extends AbstractMobileEntity{
             return position;
         else
             return pts.get(pts.size() -2);
+    }
+
+    @Override
+    public Point getPointBehind(WorldModel world) {
+        return null;
     }
 
     @Override
@@ -84,14 +90,16 @@ public class Bunny extends AbstractMobileEntity{
         int negX = rand.nextInt(3);
         int negY = rand.nextInt(3);
         if(negX == 1) {
-            x = x + 32;
-        } else if(negX == 2) {
-            x = x - 32;
+            x = x + TILE;
+        }
+        else if(negX == 2) {
+            x = x - TILE;
         }
         if(negY == 1) {
-            y = y + 32;
-        } else if(negY == 2) {
-            y = y - 32;
+            y = y + TILE;
+        }
+        else if(negY == 2) {
+            y = y - TILE;
         }
         if(!world.isOccupied(new Point(x,y))) {
             world.moveEntity(this, new Point(x, y));
@@ -102,8 +110,6 @@ public class Bunny extends AbstractMobileEntity{
     {
         if (this.getPosition().adjacent(target.getPosition()))
         {
-            //world.removeEntity(target);
-            //scheduler.unscheduleAllEvents(target);
             return true;
         }
         else
