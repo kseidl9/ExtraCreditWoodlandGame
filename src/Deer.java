@@ -67,7 +67,7 @@ class Deer extends AbstractMobileEntity {
                     ((Bunny) bunnyTarget.get()).setShouldFollow(true);
                     followers.add(((Bunny) bunnyTarget.get()));
                 } else {
-                    world.moveEntity((Bunny) bunnyTarget.get(), this.getPointBehind(world));
+                    world.moveEntity((Bunny) bunnyTarget.get(), (Bunny) bunnyTarget.get().getPointBehind(direction, followers.get(followers.size()-1)));
                 }
                 nextPeriod += this.getActionPeriod();
             }
@@ -92,6 +92,17 @@ class Deer extends AbstractMobileEntity {
         System.out.print("deer");
         return deer;
     }
+
+
+    private boolean touchesBun(Bunny target) {
+        return this.getPosition().adjacent(target.getPosition());
+    }
+
+    public static List<Bunny> getFollowers() {
+        return followers;
+    }
+}
+
 
 
     private boolean touchesBun(Bunny target) {
