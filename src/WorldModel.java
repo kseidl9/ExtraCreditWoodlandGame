@@ -11,6 +11,8 @@ final class WorldModel
    private static final String DEER_KEY = "deer";
    private static final String BUNNY_KEY = "bunny";
    private static final String FOX_KEY = "fox";
+   private static final String GAME_OVER_KEY = "gameOver";
+
 
    private static final int ORE_REACH = 1;
    private int numRows;
@@ -252,6 +254,8 @@ final class WorldModel
                return ParseElement.parseDeer(this, properties, imageStore);
              case FOX_KEY:
                  return ParseElement.parseFox(this, properties, imageStore);
+            case GAME_OVER_KEY:
+               return ParseElement.parseGameOver(this, properties, imageStore); 
          }
       }
 
