@@ -2,8 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Set;
-
 import processing.core.*;
 
 public final class VirtualWorld
@@ -43,7 +41,6 @@ public final class VirtualWorld
    private WorldView view;
    private EventScheduler scheduler;
    private Deer deer;
-   private Fox fox;
 
    private long next_time;
 
@@ -76,7 +73,6 @@ public final class VirtualWorld
       next_time = System.currentTimeMillis() + TIMER_ACTION_PERIOD;
    }
 
-
    public void draw()
    {
       long time = System.currentTimeMillis();
@@ -99,20 +95,25 @@ public final class VirtualWorld
 
              case UP:
                  pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1));
+                 deer.setTentative(new Point(deer.getPosition().x, deer.getPosition().y - 1));
                  dy = -1;
                  break;
              case DOWN:
                  pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1));
-                 dy = 1;
+                deer.setTentative(new Point(deer.getPosition().x, deer.getPosition().y + 1));
+                dy = 1;
                  break;
              case LEFT:
                  pos = deer.nextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y));
-                 dx = -1;
+                deer.setTentative(new Point(deer.getPosition().x - 1, deer.getPosition().y));
+                dx = -1;
                  break;
              case RIGHT:
                  dx = 1;
                  pos = deer.nextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y));
-                 break;
+                deer.setTentative(new Point(deer.getPosition().x + 1, deer.getPosition().y));
+
+                break;
          }
          world.moveEntity(deer, pos );
          view.shiftIfOffScreen(pos, dx, dy);
@@ -120,21 +121,9 @@ public final class VirtualWorld
        }
 
    }
-   public void mouseClicked(){
-       Bunny.spawnBunnies(world, screenToTile(new Point(mouseX, mouseY)), imageStore, scheduler);
-   }
-
-   public void keyTyped()
+    public void mouseClicked()
     {
-        Set<Entity> entities = world.getEntities();
-        for (Entity e : entities){
-            if (e instanceof Fox){
-                fox = (Fox)e;
-            }
-        }
-
-        if (key == 'f')
-            fox.kill(world,imageStore, scheduler);
+        Fox.spawnFoxes(world, screenToTile(new Point(mouseX,mouseY)),imageStore, scheduler);
     }
 
     public static Point screenToTile(Point p) {
