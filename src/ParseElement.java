@@ -29,6 +29,13 @@ public class ParseElement {
     private static final String FOX_KEY = "deer";
 
 
+    private static final int GAME_OVER_ROW = 3;
+    private static final int GAME_OVER_COL = 2;
+    private static final int GAME_OVER_ID = 1;
+    private static final int GAME_OVER_PROPERTIES = 3;
+    private static final String GAME_OVER_KEY = "gameOver";
+
+
     public static boolean parseBackground(WorldModel world, String[] properties, ImageStore imageStore) {
         if (properties.length == BGND_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[BGND_COL]),
@@ -80,6 +87,17 @@ public class ParseElement {
         }
 
         return properties.length == DEER_NUM_PROPERTIES;
+    }
+
+    public static boolean parseGameOver(WorldModel world, String[] properties, ImageStore imageStore) {
+        if (properties.length == GAME_OVER_PROPERTIES) {
+            Point pt = new Point(Integer.parseInt(properties[GAME_OVER_COL]), Integer.parseInt(properties[GAME_OVER_ROW]));
+            Entity entity = new GameOver(
+                    properties[GAME_OVER_ID], pt, imageStore.getImageList(GAME_OVER_KEY));
+            world.tryAddEntity(entity);
+        }
+
+        return properties.length == GAME_OVER_PROPERTIES;
     }
 
 
