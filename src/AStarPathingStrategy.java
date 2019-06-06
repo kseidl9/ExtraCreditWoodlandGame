@@ -43,7 +43,13 @@ class AStarPathingStrategy
             endNode = endNode.getPriorNode();
 
         }
+        if (path.size() > 1){
+            path.remove(path.size()-1); //remove source
+            Collections.reverse(path); //in order of source to dest
+        }
+
         return path;
+
 
     }
 }
