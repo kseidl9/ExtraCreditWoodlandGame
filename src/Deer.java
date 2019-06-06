@@ -12,6 +12,7 @@ class Deer extends AbstractMobileEntity {
     private static final String GAME_OVER_KEY = "gameOver";
     private String direction;
     private static LinkedList<Bunny> followers = new LinkedList<>();
+        private  Point tentative = getPosition();
 
 
     public Deer(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod) {
@@ -63,8 +64,8 @@ class Deer extends AbstractMobileEntity {
                 nextPeriod += this.getActionPeriod();
             }
         }
-        for(int i = 1; i < followers.size(); i++) {
-            if(this.touchesBun(followers.get(i))) {
+       for(int i = 1; i < followers.size(); i++) {
+            if(tentative.equals(followers.get(i).getPosition())) {
                 //game over
                 world.removeAllEntities();
                 GameOver go = new GameOver("gameOver", this.getPosition(), imageStore.getImageList(GAME_OVER_KEY));
@@ -98,6 +99,11 @@ class Deer extends AbstractMobileEntity {
     public List<Bunny> getFollowers() {
         return followers;
     }
+    
+    public void setTentative(Point tentative) {
+        this.tentative = tentative;
+    }
 }
+
 
 
