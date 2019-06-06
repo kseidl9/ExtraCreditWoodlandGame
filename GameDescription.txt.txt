@@ -1,0 +1,10 @@
+﻿#authors: Katie Seidl and Ria Bhatt
+
+This is a cute woodland game inspired by the game snake.
+
+The main character of this game is a deer and it can move with the cursors.
+
+You can touch bunnies and have them follow you, but if the train of bunnies runs into eachother it is game over.
+
+Foxes try to eat the bunnies following the deer, and turn them into carrots if they do. You can kill the foxes by pressing f.
+If the fox eats all the bunnies then he will eat you and it will also be game over.
