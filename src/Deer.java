@@ -1,9 +1,6 @@
 import processing.core.PImage;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class Deer extends AbstractMobileEntity {
@@ -39,6 +36,7 @@ class Deer extends AbstractMobileEntity {
         followers.remove(bun);
     }
 
+
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         //Optional<Entity> bunnyTarget = world.findNearest(this.getPosition(), Bunny.class);
@@ -70,9 +68,8 @@ class Deer extends AbstractMobileEntity {
        for(int i = 1; i < followers.size(); i++) {
             if(tentative.equals(followers.get(i).getPosition())) {
                 //game over
-                world.removeAllEntities();
-                GameOver go = new GameOver("gameOver", this.getPosition(), imageStore.getImageList(GAME_OVER_KEY));
-                world.addEntity(go);
+                GameOver.endGame(world, this.getPosition(), imageStore, scheduler);
+
                 break;
             }
         }

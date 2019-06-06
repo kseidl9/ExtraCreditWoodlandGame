@@ -104,6 +104,9 @@ public class Bunny extends AbstractMobileEntity{
     }
 
 
+    public Entity getTarget(){
+        return this.target;
+    }
     public static void spawnBunnies(WorldModel world, Point p, ImageStore imageStore, EventScheduler scheduler){
         //spawn bunnies
         System.out.print("here");

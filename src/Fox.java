@@ -44,10 +44,22 @@ public class Fox extends AbstractMobileEntity {
             long nextPeriod = this.getActionPeriod();
             if (target!= null)
             {
+                Entity nextTarget = target;
+                Point tgtPos = target.getPosition();
+                if (target instanceof Bunny){
+                    nextTarget = ((Bunny)target).getTarget();
+                }
+                else if (target instanceof Deer){
+                    GameOver.endGame(world, this.getPosition(), imageStore, scheduler);
+                }
+
+
                 if (moveTo(world, target, scheduler))
                 {
-                    Carrot carrot = new Carrot("carrot", target.getPosition(), imageStore.getImageList(CARROT_KEY));
+
+                    Carrot carrot = new Carrot("carrot", tgtPos, imageStore.getImageList(CARROT_KEY));
                     world.addEntity(carrot);
+                    target = nextTarget;
                     nextPeriod += this.getActionPeriod();
                 }
             }
