@@ -33,7 +33,16 @@ final class WorldModel
       }
    }
 
-   private static Optional<Entity> nearestEntity(List<Entity> entities, Point pos)
+    public void swapEntities(Entity e1, Entity e2) {
+        Point p1 = e1.getPosition();
+        Point p2 = e2.getPosition();
+        setOccupancyCell(p1, e2);
+        setOccupancyCell(p2, e1);
+        e2.setPosition(p1);
+        e1.setPosition(p2);
+    }
+
+    private static Optional<Entity> nearestEntity(List<Entity> entities, Point pos)
    {
       if (entities.isEmpty())
       {

@@ -21,10 +21,19 @@ class Deer extends AbstractMobileEntity {
     @Override
     public Point nextPosition(WorldModel world, Point destPos) {
         if (world.isOccupied(destPos)){
+            Entity e = world.getOccupant(destPos).get();
+            if (e instanceof Bunny) {
+                if (followers.contains(((Bunny) e))) {
+                    // swap positions
+                    world.swapEntities(this, e);
+                    return destPos;
+                }
+            }
             return getPosition();
         }
         return destPos;
     }
+
 
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {

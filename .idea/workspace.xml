@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4cb24cbd-926d-4864-8d8d-1de99c175f8d" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/ExplanationOfGame.txt" afterPath="$PROJECT_DIR$/ExplanationOfGame.txt" />
+      <change beforePath="$PROJECT_DIR$/src/Deer.java" afterPath="$PROJECT_DIR$/src/Deer.java" />
+      <change beforePath="$PROJECT_DIR$/src/WorldModel.java" afterPath="$PROJECT_DIR$/src/WorldModel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -64,14 +65,14 @@
       <file leaf-file-name="Deer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Deer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="51" column="83" lean-forward="false" selection-start-line="51" selection-start-column="83" selection-end-line="51" selection-end-column="83" />
+            <state relative-caret-position="304">
+              <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3166#3167#0" expanded="true" />
-                <element signature="e#3238#3239#0" expanded="true" />
-                <element signature="e#3279#3280#0" expanded="true" />
-                <element signature="e#3311#3312#0" expanded="true" />
+                <element signature="e#3472#3473#0" expanded="true" />
+                <element signature="e#3544#3545#0" expanded="true" />
+                <element signature="e#3585#3586#0" expanded="true" />
+                <element signature="e#3617#3618#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -110,7 +111,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ExplanationOfGame.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ExplanationOfGame.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ExplanationOfGame.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
@@ -120,16 +121,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WorldModel.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="WorldModel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WorldModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+            <state relative-caret-position="600">
+              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
-                <element signature="e#2703#2704#0" expanded="true" />
-                <element signature="e#2747#2748#0" expanded="true" />
-                <element signature="e#2821#2822#0" expanded="true" />
-                <element signature="e#2876#2877#0" expanded="true" />
+                <element signature="e#2962#2963#0" expanded="true" />
+                <element signature="e#3006#3007#0" expanded="true" />
+                <element signature="e#3080#3081#0" expanded="true" />
+                <element signature="e#3135#3136#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -153,8 +154,8 @@
       <find>water</find>
       <find>shouldF</find>
       <find>remove</find>
-      <find>set</find>
       <find>32</find>
+      <find>set</find>
     </findStrings>
     <replaceStrings>
       <replace>sand</replace>
@@ -180,12 +181,12 @@
         <option value="$PROJECT_DIR$/src/WorldView.java" />
         <option value="$PROJECT_DIR$/imagelist" />
         <option value="$PROJECT_DIR$/gaia.sav" />
-        <option value="$PROJECT_DIR$/src/Deer.java" />
         <option value="$PROJECT_DIR$/src/Bunny.java" />
         <option value="$PROJECT_DIR$/src/Fox.java" />
-        <option value="$PROJECT_DIR$/src/WorldModel.java" />
         <option value="$PROJECT_DIR$/src/VirtualWorld.java" />
         <option value="$PROJECT_DIR$/ExplanationOfGame.txt" />
+        <option value="$PROJECT_DIR$/src/Deer.java" />
+        <option value="$PROJECT_DIR$/src/WorldModel.java" />
       </list>
     </option>
   </component>
@@ -507,7 +508,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559811090869</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="edditing the changes we make and reflecting it in the document">
+      <created>1559811414447</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1559811414447</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -613,7 +621,8 @@
     <MESSAGE value="added maybe kill fox &#10;edited next position to only move towards the train of bunnies &#10;edited parameters of moveTo" />
     <MESSAGE value="change the fox situation: now if you press f it will kill the fox" />
     <MESSAGE value="fixed bunny out of bounds error &#10;removed unused lines of code in world model" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed bunny out of bounds error &#10;removed unused lines of code in world model" />
+    <MESSAGE value="edditing the changes we make and reflecting it in the document" />
+    <option name="LAST_COMMIT_MESSAGE" value="edditing the changes we make and reflecting it in the document" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -660,10 +669,10 @@
         <state relative-caret-position="30">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
-            <element signature="e#2703#2704#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2821#2822#0" expanded="true" />
-            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3080#3081#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -708,10 +717,10 @@
         <state relative-caret-position="30">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
-            <element signature="e#2703#2704#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2821#2822#0" expanded="true" />
-            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3080#3081#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -764,10 +773,10 @@
         <state relative-caret-position="30">
           <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
           <folding>
-            <element signature="e#2703#2704#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2821#2822#0" expanded="true" />
-            <element signature="e#2876#2877#0" expanded="true" />
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3080#3081#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -883,20 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Deer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="51" column="83" lean-forward="false" selection-start-line="51" selection-start-column="83" selection-end-line="51" selection-end-column="83" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3166#3167#0" expanded="true" />
-            <element signature="e#3238#3239#0" expanded="true" />
-            <element signature="e#3279#3280#0" expanded="true" />
-            <element signature="e#3311#3312#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Bunny.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="508">
@@ -914,19 +909,6 @@
           <caret line="105" column="81" lean-forward="false" selection-start-line="105" selection-start-column="81" selection-end-line="105" selection-end-column="81" />
           <folding>
             <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/WorldModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="19" column="23" lean-forward="false" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
-          <folding>
-            <element signature="e#2703#2704#0" expanded="true" />
-            <element signature="e#2747#2748#0" expanded="true" />
-            <element signature="e#2821#2822#0" expanded="true" />
-            <element signature="e#2876#2877#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -956,6 +938,33 @@
         <state relative-caret-position="210">
           <caret line="14" column="129" lean-forward="false" selection-start-line="14" selection-start-column="129" selection-end-line="14" selection-end-column="129" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Deer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="27" column="33" lean-forward="true" selection-start-line="27" selection-start-column="33" selection-end-line="27" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3472#3473#0" expanded="true" />
+            <element signature="e#3544#3545#0" expanded="true" />
+            <element signature="e#3585#3586#0" expanded="true" />
+            <element signature="e#3617#3618#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/WorldModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#2962#2963#0" expanded="true" />
+            <element signature="e#3006#3007#0" expanded="true" />
+            <element signature="e#3080#3081#0" expanded="true" />
+            <element signature="e#3135#3136#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
