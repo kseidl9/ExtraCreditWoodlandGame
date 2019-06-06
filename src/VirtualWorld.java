@@ -68,6 +68,7 @@ public final class VirtualWorld
       Bunny.spawnBunnies(world, new Point(rand.nextInt(32), rand.nextInt(32)), imageStore, scheduler);
       deer = Deer.createDeer(world, imageStore, scheduler);
 
+      Fox.spawnFoxes(world, new Point(rand.nextInt(32), rand.nextInt(32)), imageStore, scheduler);
       world.scheduleActions(scheduler, imageStore);
 
       next_time = System.currentTimeMillis() + TIMER_ACTION_PERIOD;
@@ -118,7 +119,7 @@ public final class VirtualWorld
    }
     public void mouseClicked()
     {
-        Fox.spawnFoxes(world, screenToTile(new Point(mouseX,mouseY)),imageStore, scheduler);
+        Fox.maybeKillFox(world, screenToTile(new Point(mouseX,mouseY)),imageStore, scheduler);
     }
 
     public static Point screenToTile(Point p) {
