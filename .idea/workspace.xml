@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="4cb24cbd-926d-4864-8d8d-1de99c175f8d" name="Default" comment="hmm trying to commit but its not noticing all the changes I just made">
+    <list default="true" id="4cb24cbd-926d-4864-8d8d-1de99c175f8d" name="Default" comment="added a game over picture">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/gaia.sav" afterPath="$PROJECT_DIR$/gaia.sav" />
-      <change beforePath="$PROJECT_DIR$/imagelist" afterPath="$PROJECT_DIR$/imagelist" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,7 +51,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Deer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Deer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Deer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
@@ -81,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="gaia.sav" pinned="false" current-in-tab="false">
+      <file leaf-file-name="gaia.sav" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gaia.sav">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -169,8 +168,8 @@
         <option value="$PROJECT_DIR$/src/WorldView.java" />
         <option value="$PROJECT_DIR$/src/Deer.java" />
         <option value="$PROJECT_DIR$/src/Bunny.java" />
-        <option value="$PROJECT_DIR$/gaia.sav" />
         <option value="$PROJECT_DIR$/imagelist" />
+        <option value="$PROJECT_DIR$/gaia.sav" />
       </list>
     </option>
   </component>
@@ -455,7 +454,14 @@
       <option name="project" value="LOCAL" />
       <updated>1559803575221</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="added a game over picture">
+      <created>1559804166165</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1559804166165</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -470,7 +476,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28402367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28402367" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32938856" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -527,7 +533,8 @@
     <MESSAGE value="figured out how to fix the Astar problem!!!&#10;reversed it and removed the source" />
     <MESSAGE value="decided not to hard code the following bunnies positions but to have them just use a start to compute the next step to the bunny infront" />
     <MESSAGE value="hmm trying to commit but its not noticing all the changes I just made" />
-    <option name="LAST_COMMIT_MESSAGE" value="hmm trying to commit but its not noticing all the changes I just made" />
+    <MESSAGE value="added a game over picture" />
+    <option name="LAST_COMMIT_MESSAGE" value="added a game over picture" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -823,22 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gaia.sav">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ExplanationOfGame.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="107" lean-forward="false" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imagelist">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -858,6 +849,22 @@
             <element signature="e#2672#2673#0" expanded="true" />
             <element signature="e#2704#2705#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ExplanationOfGame.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="107" lean-forward="false" selection-start-line="8" selection-start-column="107" selection-end-line="8" selection-end-column="107" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gaia.sav">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
