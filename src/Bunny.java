@@ -132,6 +132,9 @@ public class Bunny extends AbstractMobileEntity{
     public void setShouldFollow(boolean shouldFollow) {
         this.shouldFollow = shouldFollow;
     }
-}
 
+    public boolean follower(){
+        return shouldFollow;
+    }
+}
 
