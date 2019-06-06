@@ -30,7 +30,7 @@ public class Fox extends AbstractMobileEntity {
                 PathingStrategy strategy = getStrategy();
                 pts = strategy.computePath(getPosition(), pos, p -> !world.isOccupied(p),
                         (s, d) -> s.adjacent(d),
-                        PathingStrategy.DIAGONAL_CARDINAL_NEIGHBORS);
+                        PathingStrategy.CARDINAL_NEIGHBORS);
             }
             if (pts.isEmpty())
                 return getPosition();
@@ -42,7 +42,6 @@ public class Fox extends AbstractMobileEntity {
         public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
             //Optional<Entity> bunnyTarget = world.findNearest(this.getPosition(), Bunny.class);
             long nextPeriod = this.getActionPeriod();
-//TODO need to remember to change deer to call set target to last bunny in bunny list when ria is done
             if (target!= null)
             {
                 if (moveTo(world, target, scheduler))
@@ -63,6 +62,7 @@ public class Fox extends AbstractMobileEntity {
         {
             if (this.getPosition().adjacent(target.getPosition()))
             {
+                Deer.killedBun((Bunny)target);
                 world.removeEntity(target);
                 scheduler.unscheduleAllEvents(target);
                 return true;
