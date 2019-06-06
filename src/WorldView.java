@@ -74,4 +74,10 @@ final class WorldView
 
       viewport.shift(newCol, newRow);
    }
+
+   public void shiftIfOffScreen(Point pos, int colDelta, int rowDelta){
+      if (!viewport.contains(pos)){
+         shiftView(colDelta, rowDelta);
+      }
+   }
 }

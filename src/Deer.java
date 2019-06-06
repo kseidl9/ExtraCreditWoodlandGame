@@ -9,23 +9,13 @@ class Deer extends AbstractMobileEntity {
 
     private static final String DEER_KEY = "deer";
     private String direction;
-    private static final int TILE = 32;
-    private static final String UP = "up";
-    private static final String DOWN = "down";
-    private static final String LEFT = "left";
-    private static final String RIGHT = "right";
-    private static List<Bunny> followers = new LinkedList<>();
-    //private boolean letThereBeBunnies = false;
+    private static LinkedList<Bunny> followers = new LinkedList<>();
 
 
     public Deer(String id, Point position, List<PImage> images, int actionPeriod, int animationPeriod) {
         super(id, position, images, actionPeriod, animationPeriod);
     }
 
-    public Point setDirectionNextPosition(WorldModel world, Point destPos, String direction){
-        this.direction = direction;
-        return nextPosition(world, destPos);
-    }
     @Override
     public Point nextPosition(WorldModel world, Point destPos) {
         if (world.isOccupied(destPos)){
@@ -34,40 +24,38 @@ class Deer extends AbstractMobileEntity {
         return destPos;
     }
 
-    public Point getPointBehind(WorldModel world) {
-        Point deerPoint = getPosition();
-        switch(direction){
-            case UP:
-                return new Point(deerPoint.x, deerPoint.y + TILE);
-
-            case DOWN:
-                return new Point(deerPoint.x, deerPoint.y - TILE);
-
-            case RIGHT:
-                return new Point(deerPoint.x - TILE, deerPoint.y);
-
-            case LEFT:
-                return new Point(deerPoint.x + TILE, deerPoint.y);
-
-        }
-        return deerPoint; //shouldn't happen
-
-    }
-
     @Override
     public void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
-        Optional<Entity> bunnyTarget = world.findNearest(this.getPosition(), Bunny.class);
+        // FIXME need to just see if there are adjacent bunnies we're that aren't yet following the deer
+        //Optional<Entity> bunnyTarget = world.findNearest(this.getPosition(), Bunny.class);
+        final List<Bunny> notFollowing = new LinkedList<>();
         long nextPeriod = this.getActionPeriod();
 
-        if (bunnyTarget.isPresent()) {
+        PathingStrategy.CARDINAL_NEIGHBORS.apply(getPosition()).forEach(p -> {
+            if (world.isOccupied(p)) {
+                Optional<Entity> occ = world.getOccupant(p);
+                if (occ.isPresent()) {
+                    Entity oe = occ.get();
+                    if (oe instanceof Bunny) {
+                        Bunny b = (Bunny) oe;
+                        if (!notFollowing.contains(b))
+                            notFollowing.add(b);
+                    }
+                }
+            }
+        });
 
-            if (touchesBun((Bunny) bunnyTarget.get())) {
-                //bunny follows deer
-                if(!((Bunny) bunnyTarget.get()).follower()){
-                    ((Bunny) bunnyTarget.get()).setShouldFollow(true);
-                    followers.add(((Bunny) bunnyTarget.get()));
-                } else {
-                    world.moveEntity((Bunny) bunnyTarget.get(), (Bunny) bunnyTarget.get().getPointBehind(direction, followers.get(followers.size()-1)));
+        if (!notFollowing.isEmpty()) {
+            Bunny bun = notFollowing.get(0);
+
+            if (!notFollowing.contains(bun) && touchesBun(bun)) {
+                if (followers.size() == 0){
+                    bun.setTarget(this);
+                    followers.add(bun);
+                }
+                else{
+                    bun.setTarget(followers.getLast());
+                    followers.add(bun);
                 }
                 nextPeriod += this.getActionPeriod();
             }
@@ -80,12 +68,9 @@ class Deer extends AbstractMobileEntity {
 
     public static Deer createDeer(WorldModel world, ImageStore imageStore, EventScheduler scheduler) {
         //for when game starts
-        System.out.print("here");
         Random rand = new Random();
         Point start = new Point(rand.nextInt(32 / 2), rand.nextInt(32 / 2));
-
         Deer deer = new Deer(DEER_KEY, start, imageStore.getImageList(DEER_KEY), 6, 5);
-
 
         world.addEntity(deer);
         deer.scheduleActions(scheduler, world, imageStore);
@@ -98,18 +83,7 @@ class Deer extends AbstractMobileEntity {
         return this.getPosition().adjacent(target.getPosition());
     }
 
-    public static List<Bunny> getFollowers() {
-        return followers;
-    }
-}
-
-
-
-    private boolean touchesBun(Bunny target) {
-        return this.getPosition().adjacent(target.getPosition());
-    }
-
-    public static List<Bunny> getFollowers() {
+    public List<Bunny> getFollowers() {
         return followers;
     }
 }

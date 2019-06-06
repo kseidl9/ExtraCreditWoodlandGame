@@ -4,11 +4,6 @@ import java.util.Random;
 import java.util.Scanner;
 import processing.core.*;
 
-import static java.awt.Event.DOWN;
-import static java.awt.Event.UP;
-import static javax.swing.JSplitPane.LEFT;
-import static javax.swing.JSplitPane.RIGHT;
-
 public final class VirtualWorld
    extends PApplet
 {
@@ -99,24 +94,24 @@ public final class VirtualWorld
          switch(keyCode) {
 
              case UP:
-                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1), "up");
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y - 1));
                  dy = -1;
                  break;
              case DOWN:
-                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1), "down");
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x, deer.getPosition().y + 1));
                  dy = 1;
                  break;
              case LEFT:
-                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y), "left");
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x - 1, deer.getPosition().y));
                  dx = -1;
                  break;
              case RIGHT:
                  dx = 1;
-                 pos = deer.setDirectionNextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y), "right");
+                 pos = deer.nextPosition(world, new Point(deer.getPosition().x + 1, deer.getPosition().y));
                  break;
          }
          world.moveEntity(deer, pos );
-         view.shiftView(dx, dy);
+         view.shiftIfOffScreen(pos, dx, dy);
 
        }
 
